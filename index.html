@@ -196,7 +196,7 @@ footer .wm{font:500 22px var(--disp);letter-spacing:.34em;color:var(--ink);text-
 @media(prefers-reduced-motion:reduce){#hero .hi{animation:none}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style></head><body>
 
-<nav id="nav"><a class="wm" href="#top">Thornbrook</a><a class="l" href="#vision">The vision</a><a class="l" href="#rooms">Room by room</a><a class="l" href="#numbers">Numbers</a><a class="l" href="#market">Market</a><a class="l" href="#map-sec">Location</a><a class="cta" href="#numbers">Run the numbers</a></nav>
+<nav id="nav"><a class="wm" href="#top">Thornbrook</a><a class="l" href="#vision">The vision</a><a class="l" href="#rooms">Room by room</a><a class="l" href="#exterior">Exterior</a><a class="l" href="#numbers">Numbers</a><a class="l" href="#market">Market</a><a class="l" href="#map-sec">Location</a><a class="cta" href="#numbers">Run the numbers</a></nav>
 <nav id="rail" aria-label="Rooms"></nav>
 
 <header id="hero"><div id="top"></div>
@@ -216,6 +216,10 @@ footer .wm{font:500 22px var(--disp);letter-spacing:.34em;color:var(--ink);text-
 <section id="rooms"><div class="wrap rooms-h"><div class="eyebrow">Room by room · scroll to reveal</div>
 <h2>Nineteen rooms. <em>Before and after.</em></h2><p>Each room opens as the listing photo. Keep scrolling and the renovation concept sweeps across it.</p></div>
 <div id="chaps"></div></section>
+
+<section id="exterior"><div class="wrap rooms-h"><div class="eyebrow">In person · the exterior</div>
+<h2>Seven views outside. <em>Photographed on site.</em></h2><p>These before photos were taken in person at the house. The concept keeps the original red brick and adds matte black window details and natural wood accents.</p></div>
+<div id="xchaps"></div></section>
 
 
 
@@ -285,7 +289,57 @@ footer .wm{font:500 22px var(--disp);letter-spacing:.34em;color:var(--ink);text-
 <div id="lb"><button aria-label="Close">×</button><img alt=""><h3></h3><p></p></div>
 
 <script>
-const ROOMS=[{"k": "deck", "t": "Rear exterior", "c": "Refresh the deck and railings, keep the original brick, and layer planting along the back of the house.", "z": "Rear exterior \u00b7 deck", "r": 1.3359}, {"k": "stairs", "t": "A staircase worth using", "c": "A reworked deck staircase in warm wood with low lighting, set into refreshed planting.", "z": "Rear deck staircase", "r": 1.3359}, {"k": "brickside", "t": "Keep the brick", "c": "The original natural brick stays exactly as it is, with a cleaner edge and simple planting along the side.", "z": "Brick side exterior", "r": 1.3423}, {"k": "utilities", "t": "Tidy the utilities", "c": "The generator and air conditioning stay put, screened with simple wood slats and planting.", "z": "Exterior utilities", "r": 1.3436}, {"k": "hall", "t": "One continuous floor", "c": "Light natural oak replaces the patchwork tile in the hallway. The brick wall stays untouched.", "z": "Main hallway", "r": 0.7529}, {"k": "kitchen", "t": "Open the kitchen", "c": "Remove the attached L-shaped peninsula. A separate wood island with an ivory quartz top opens the room.", "z": "Kitchen and island", "r": 1.3321}, {"k": "dining", "t": "Made for gathering", "c": "Light oak flooring, a new dining table and fresh lighting, with the wood ceiling and paneling left in place.", "z": "Dining room", "r": 1.3258}, {"k": "greatroom", "t": "The big windows stay", "c": "The great room keeps its floor-to-ceiling windows and brick fireplace, with oak flooring and softer furniture.", "z": "Great room", "r": 1.3245}, {"k": "living_fire", "t": "The fireplace, centered", "c": "The brick stays as the centerpiece. Warm ivory seating and olive accents sit under the original beams, with oak flooring running through.", "z": "Fireplace and living-dining", "r": 1.4148}, {"k": "office", "t": "Reset the office", "c": "The bulky corner hutch comes out. A simple desk and closed storage take its place.", "z": "Office", "r": 1.3258}, {"k": "primary", "t": "A calmer primary bedroom", "c": "Warm ivory walls, oak flooring and layered bedding, with the big window and curtains as the focus.", "z": "Primary bedroom", "r": 1.3283}, {"k": "bath1", "t": "Bathroom 1", "c": "A wood vanity, ivory counter and glass-enclosed tub and shower in warm tones.", "z": "Bathroom 1", "r": 0.75}, {"k": "bath1alt", "t": "Bathroom 1, second view", "c": "A new vanity with brass-toned fixtures, a framed mirror and softer lighting.", "z": "Bathroom 1, alternate", "r": 0.75}, {"k": "bath2", "t": "Bathroom 2", "c": "A long wood vanity, a glass door and warm lighting replace the green-tile finishes.", "z": "Bathroom 2", "r": 1.3245}, {"k": "bath3", "t": "Bathroom 3", "c": "A glass shower, warm wood vanity and neutral floor tile in place of the black-and-white floor.", "z": "Bathroom 3", "r": 0.7514}, {"k": "game", "t": "Finish the basement", "c": "Treadmill removed, missing ceiling panels replaced, utility access kept clear, and a game and lounge space added.", "z": "Basement game room", "r": 1.3258}, {"k": "basement_room", "t": "A lower level to live in", "c": "Cream walls over white wainscot, a sage accent wall, recessed lighting and oak-tone flooring turn the room into a lounge.", "z": "Lower-level lounge", "r": 1.5958}, {"k": "built_ins", "t": "Built-ins that work", "c": "Open bays become sage cabinetry with brass pulls, an ivory counter and floating oak shelves. The beadboard and mosaic floor stay.", "z": "Built-in storage", "r": 1.4329}, {"k": "laundry", "t": "A laundry corner worth keeping", "c": "Sage upper cabinets, an oak counter over the machines, floating shelves and warm under-cabinet light. The washer, dryer and sink stay in place.", "z": "Laundry", "r": 1.5275}];
+const ROOMS=[{"k": "deck", "t": "Rear exterior", "c": "Refresh the deck and railings, keep the original brick, and layer planting along the back of the house.", "z": "Rear exterior \u00b7 deck", "r": 1.3359}, {"k": "stairs", "t": "A staircase worth using", "c": "A reworked deck staircase in warm wood with low lighting, set into refreshed planting.", "z": "Rear deck staircase", "r": 1.3359}, {"k": "brickside", "t": "Keep the brick", "c": "The original natural brick stays exactly as it is, with a cleaner edge and simple planting along the side.", "z": "Brick side exterior", "r": 1.3423}, {"k": "utilities", "t": "Tidy the utilities", "c": "The generator and air conditioning stay put, screened with simple wood slats and planting.", "z": "Exterior utilities", "r": 1.3436}, {"k": "hall", "t": "One continuous floor", "c": "Light natural oak replaces the patchwork tile in the hallway. The brick wall stays untouched.", "z": "Main hallway", "r": 0.7529}, {"k": "kitchen", "t": "Open the kitchen", "c": "Remove the attached L-shaped peninsula. A separate wood island with an ivory quartz top opens the room.", "z": "Kitchen and island", "r": 1.3321}, {"k": "dining", "t": "Made for gathering", "c": "Light oak flooring, a new dining table and fresh lighting, with the wood ceiling and paneling left in place.", "z": "Dining room", "r": 1.3258}, {"k": "greatroom", "t": "The big windows stay", "c": "The great room keeps its floor-to-ceiling windows and brick fireplace, with oak flooring and softer furniture.", "z": "Great room", "r": 1.3245}, {"k": "living_fire", "t": "The fireplace, centered", "c": "The brick stays as the centerpiece. Warm ivory seating and olive accents sit under the original beams, with oak flooring running through.", "z": "Fireplace and living-dining", "r": 1.4148}, {"k": "office", "t": "Reset the office", "c": "The bulky corner hutch comes out. A simple desk and closed storage take its place.", "z": "Office", "r": 1.3258}, {"k": "primary", "t": "A calmer primary bedroom", "c": "Warm ivory walls, oak flooring and layered bedding, with the big window and curtains as the focus.", "z": "Primary bedroom", "r": 1.3283}, {"k": "bath1", "t": "Bathroom 1", "c": "A wood vanity, ivory counter and glass-enclosed tub and shower in warm tones.", "z": "Bathroom 1", "r": 0.75}, {"k": "bath1alt", "t": "Bathroom 1, second view", "c": "A new vanity with brass-toned fixtures, a framed mirror and softer lighting.", "z": "Bathroom 1, alternate", "r": 0.75}, {"k": "bath2", "t": "Bathroom 2", "c": "A long wood vanity, a glass door and warm lighting replace the green-tile finishes.", "z": "Bathroom 2", "r": 1.3245}, {"k": "bath3", "t": "Bathroom 3", "c": "A glass shower, warm wood vanity and neutral floor tile in place of the black-and-white floor.", "z": "Bathroom 3", "r": 0.7514}, {"k": "game", "t": "Finish the basement", "c": "Treadmill removed, missing ceiling panels replaced, utility access kept clear, and a game and lounge space added.", "z": "Basement game room", "r": 1.3258}, {"k": "basement_room", "t": "A lower level to live in", "c": "Cream walls over white wainscot, a sage accent wall, recessed lighting and oak-tone flooring turn the room into a lounge.", "z": "Lower-level lounge", "r": 1.5958}, {"k": "built_ins", "t": "Built-ins that work", "c": "Open bays become sage cabinetry with brass pulls, an ivory counter and floating oak shelves. The beadboard and mosaic floor stay.", "z": "Built-in storage", "r": 1.4329}, {"k": "laundry", "t": "A laundry corner worth keeping", "c": "Sage upper cabinets, an oak counter over the machines, floating shelves and warm under-cabinet light. The washer, dryer and sink stay in place.", "z": "Laundry", "r": 1.5275}];const XR=[
+ {
+  "k": "x_front",
+  "t": "Front elevation",
+  "c": "The original red brick stays. Matte black window frames and warm wood accents sharpen the face of the house.",
+  "z": "Exterior \u00b7 1 of 7",
+  "r": 1.3333
+ },
+ {
+  "k": "x_deck_main",
+  "t": "Rear deck, main view",
+  "c": "A refreshed deck with natural wood tones and black details against the retained brick.",
+  "z": "Exterior \u00b7 2 of 7",
+  "r": 1.3333
+ },
+ {
+  "k": "x_rear_wide",
+  "t": "Rear elevation, wide view",
+  "c": "The whole back of the house at once: brick, deck, black window details and wood accents working together.",
+  "z": "Exterior \u00b7 3 of 7",
+  "r": 1.3333
+ },
+ {
+  "k": "x_gable",
+  "t": "Great-room gable and stairs",
+  "c": "The tall gable and the deck stairs get black window details and natural wood, with the brick left as is.",
+  "z": "Exterior \u00b7 4 of 7",
+  "r": 0.7495
+ },
+ {
+  "k": "x_side_yard",
+  "t": "Wooded side yard",
+  "c": "The side of the house meets the trees. Brick stays natural; black trim and wood add contrast.",
+  "z": "Exterior \u00b7 5 of 7",
+  "r": 1.3333
+ },
+ {
+  "k": "x_gable_close",
+  "t": "Gable window close-up",
+  "c": "A closer look at the matte black window treatment against the original brick.",
+  "z": "Exterior \u00b7 6 of 7",
+  "r": 0.7495
+ },
+ {
+  "k": "x_side",
+  "t": "Side elevation",
+  "c": "The side wall in full, with the same restrained palette of brick, black and wood.",
+  "z": "Exterior \u00b7 7 of 7",
+  "r": 1.3333
+ }
+];
 const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),ea=x=>x*x*(3-2*x);
 /* nav + hero cross-fade */
 const nav=$("nav");function nv(){nav.classList.toggle("on",scrollY>40)}addEventListener("scroll",nv,{passive:true});nv();
@@ -294,14 +348,15 @@ let hs=0;const h0=$("h0"),h1=$("h1"),ht=$("htag");setInterval(()=>{hs^=1;h0.clas
 const mp=$("mfp");const mw=[];(function wrap(n){[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(t=>{if(!t.trim()){f.appendChild(document.createTextNode(t));return}const s=document.createElement("span");s.className="w";s.textContent=t;mw.push(s);f.appendChild(s)});c.replaceWith(f)}else if(c.nodeType===1)wrap(c)})})(mp);
 function mf(){const r=mp.getBoundingClientRect(),p=cl((innerHeight*.9-r.top)/(innerHeight*.55+r.height*.5));const n=Math.floor(p*mw.length*1.15);mw.forEach((w,i)=>w.classList.toggle("on",i<n))}
 /* chapters */
-const chaps=$("chaps"),rail=$("rail"),els=[];
-ROOMS.forEach((r,i)=>{const s=document.createElement("div");s.className="chap";s.id="c"+(i+1);
-s.innerHTML='<div class="st"><div class="bgb" style="background-image:url(img/'+r.k+'_after.jpg)"></div><div class="txt"><div class="num">'+String(i+1).padStart(2,"0")+'<small>/ '+ROOMS.length+'</small></div><div class="zn">'+r.z+'</div><h3>'+r.t+'</h3><p class="cp">'+r.c+'</p><div class="chips"><span class="chip on">Before</span><span class="chip">After · concept</span></div></div>'+
-'<div class="frame" style="--r:'+r.r+'"><img src="img/'+r.k+'_before.jpg" alt="'+r.t+' before"'+(i<2?'':' loading="lazy"')+' decoding="async"><img class="a" src="img/'+r.k+'_after.jpg" alt="'+r.t+' after concept"'+(i<2?'':' loading="lazy"')+' decoding="async"><div class="ln"></div><span class="tg l">Before</span><span class="tg r">After</span></div><div class="pr"><i></i></div></div>';
-chaps.appendChild(s);const f=s.querySelector(".frame"),chips=s.querySelectorAll(".chip"),pr=s.querySelector(".pr i");els.push({s,f,chips,pr});
-const a=document.createElement("a");a.href="#c"+(i+1);a.innerHTML="<span>"+String(i+1).padStart(2,"0")+" · "+r.t+"</span>";rail.appendChild(a)});
+const chaps=$("chaps"),rail=$("rail"),els=[],xels=[];
+function mk(L,box,pf,isRoom){L.forEach((r,i)=>{const s=document.createElement("div");s.className="chap";s.id=pf+(i+1);
+s.innerHTML='<div class="st"><div class="bgb" style="background-image:url(img/'+r.k+'_after.jpg)"></div><div class="txt"><div class="num">'+String(i+1).padStart(2,"0")+'<small>/ '+L.length+'</small></div><div class="zn">'+r.z+'</div><h3>'+r.t+'</h3><p class="cp">'+r.c+'</p><div class="chips"><span class="chip on">Before</span><span class="chip">After · concept</span></div></div>'+
+'<div class="frame" style="--r:'+r.r+'"><img src="img/'+r.k+'_before.jpg" alt="'+r.t+' before"'+(i<2&&isRoom?'':' loading="lazy"')+' decoding="async"><img class="a" src="img/'+r.k+'_after.jpg" alt="'+r.t+' after concept"'+(i<2&&isRoom?'':' loading="lazy"')+' decoding="async"><div class="ln"></div><span class="tg l">Before</span><span class="tg r">After</span></div><div class="pr"><i></i></div></div>';
+box.appendChild(s);const f=s.querySelector(".frame"),chips=s.querySelectorAll(".chip"),pr=s.querySelector(".pr i");(isRoom?els:xels).push({s,f,chips,pr});
+if(!isRoom)return;const a=document.createElement("a");a.href="#c"+(i+1);a.innerHTML="<span>"+String(i+1).padStart(2,"0")+" · "+r.t+"</span>";rail.appendChild(a)})}
+mk(ROOMS,chaps,"c",1);mk(XR,$("xchaps"),"x",0);
 const dots=[...rail.children];
-function ch(){let cur=-1;els.forEach((e,i)=>{const r=e.s.getBoundingClientRect(),h=e.s.offsetHeight-innerHeight;if(r.bottom<-50||r.top>innerHeight+50)return;const p=cl(-r.top/h);const w=ea(cl((p-.1)/.5));e.f.style.setProperty("--w",(w*100)+"%");e.f.querySelector(".ln").style.opacity=w>.01&&w<.99?.9:0;e.chips[0].classList.toggle("on",w<.5);e.chips[1].classList.toggle("on",w>=.5);e.pr.style.width=(p*100)+"%";if(r.top<=innerHeight*.5&&r.bottom>innerHeight*.5)cur=i});
+function ch(){let cur=-1;xels.forEach(e=>{const r=e.s.getBoundingClientRect(),h=e.s.offsetHeight-innerHeight;if(r.bottom<-50||r.top>innerHeight+50)return;const p=cl(-r.top/h),w=ea(cl((p-.1)/.5));e.f.style.setProperty("--w",(w*100)+"%");e.f.querySelector(".ln").style.opacity=w>.01&&w<.99?.9:0;e.chips[0].classList.toggle("on",w<.5);e.chips[1].classList.toggle("on",w>=.5);e.pr.style.width=(p*100)+"%"});els.forEach((e,i)=>{const r=e.s.getBoundingClientRect(),h=e.s.offsetHeight-innerHeight;if(r.bottom<-50||r.top>innerHeight+50)return;const p=cl(-r.top/h);const w=ea(cl((p-.1)/.5));e.f.style.setProperty("--w",(w*100)+"%");e.f.querySelector(".ln").style.opacity=w>.01&&w<.99?.9:0;e.chips[0].classList.toggle("on",w<.5);e.chips[1].classList.toggle("on",w>=.5);e.pr.style.width=(p*100)+"%";if(r.top<=innerHeight*.5&&r.bottom>innerHeight*.5)cur=i});
 const first=els[0].s.getBoundingClientRect().top,last=els[els.length-1].s.getBoundingClientRect().bottom;rail.classList.toggle("on",first<innerHeight*.5&&last>innerHeight*.5);dots.forEach((d,i)=>d.classList.toggle("cur",i===cur))}
 /* reveal */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}}),{threshold:.15});document.querySelectorAll(".rv,.scope .row").forEach(e=>{e.classList.add("rv");io.observe(e)});
