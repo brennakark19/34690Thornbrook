@@ -12,7 +12,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-ap
 .serif{font-family:Georgia,"Times New Roman",serif;font-weight:400}
 #hero{position:relative;height:100vh;height:100svh;overflow:hidden;background:#000;color:#fff;display:flex;align-items:flex-end}
 #hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 24s ease-out forwards}
-@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translateX(-2%)}}
+@keyframes kb{from{transform:scale(1.0)}to{transform:scale(1.05)}}
 #hero::after,#stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,transparent 50%,rgba(0,0,0,.78));pointer-events:none}
 .hw{position:relative;z-index:2;padding:6vw;max-width:900px}
 .eyebrow{letter-spacing:.2em;font-size:12px;text-transform:uppercase;opacity:.85}
@@ -76,6 +76,8 @@ td:first-child a,td:nth-child(4){white-space:nowrap}th{white-space:nowrap}#vd{ma
 .hud,#cap,#bar{z-index:50}.ctl{z-index:51}#stage::after{z-index:40}
 @media(max-width:600px){.tr{top:calc(44px + env(safe-area-inset-top,0px));left:20px;right:auto;text-align:left}.ctl{top:calc(84px + env(safe-area-inset-top,0px));bottom:auto;right:auto;left:20px}}
 .draft{border-left:4px solid var(--wood);background:var(--card);border-radius:10px;padding:12px 16px;margin:18px 0 0;font-size:14px;color:var(--mut)}
+.cam{inset:0!important}.cam img{object-fit:contain!important}.cam .bg{object-fit:cover!important;filter:blur(28px) brightness(.5);transform:scale(1.15)}.cam .pbox{position:absolute!important;left:50%!important;top:50%!important;bottom:auto!important;transform:translate(-50%,-50%)!important;aspect-ratio:auto!important}.cam .pbox img{position:absolute;inset:0;width:100%;height:100%}
+@media(max-width:700px){#cap{left:16px;right:16px}#cap h3,#ct{font-size:clamp(22px,7vw,30px)}#cp{font-size:13px;line-height:1.4}}
 </style></head><body>
 
 <header id="hero">
@@ -178,15 +180,17 @@ const S=[
 ["Finish the basement",28,29,"Treadmill removed, missing ceiling panels replaced, utility access kept clear, and a game and lounge space added.","Basement game room","\u22123 m",0]];
 const N=S.length,$=id=>document.getElementById(id),st=$("stage"),fly=$("fly");
 $("hi").src=IMG[1];
-const M=[[1.02,1.09,-1.5,1.5],[1.09,1.02,1.5,-1],[1.03,1.1,1.5,-1.5],[1.08,1.02,-1.5,1]];
+const M=[[1,1.035,-.4,.4],[1.035,1,.4,-.3],[1,1.03,.3,-.4],[1.03,1,-.3,.3]];
 const sc=S.map((s,k)=>{const d=document.createElement("div");d.className="sc";
-d.innerHTML=s[6]?'<div class="cam"><img class="bg" src="'+IMG[s[2]]+'" alt=""><div class="pbox" style="aspect-ratio:3/4"><img src="'+IMG[s[1]]+'" alt="" style="object-fit:contain"><img class="af" src="'+IMG[s[2]]+'" alt="'+s[0]+'" style="object-fit:contain"><div class="ln"></div></div></div>':'<div class="cam"><img src="'+IMG[s[1]]+'" alt=""><img class="af" src="'+IMG[s[2]]+'" alt="'+s[0]+'"><div class="ln"></div></div>';
+d.innerHTML='<div class="cam"><img class="bg" src="'+IMG[s[2]]+'" alt=""><div class="pbox"><img src="'+IMG[s[1]]+'" alt=""><img class="af" src="'+IMG[s[2]]+'" alt="'+s[0]+'"><div class="ln"></div></div></div>';
 st.insertBefore(d,st.firstChild);return d});
+const fit=()=>sc.forEach(d=>{const p=d.querySelector(".pbox"),r=+p.dataset.r||1.333;let w=st.clientWidth,h=st.clientHeight;if(w/h>r)w=h*r;else h=w/r;p.style.width=w+"px";p.style.height=h+"px"});
+sc.forEach(d=>{const i=d.querySelector(".pbox img"),f=()=>{d.querySelector(".pbox").dataset.r=i.naturalWidth/i.naturalHeight;fit()};i.complete&&i.naturalWidth?f():i.addEventListener("load",f)});addEventListener("resize",fit);addEventListener("orientationchange",()=>setTimeout(fit,200));
 const bar=$("bar");S.forEach(()=>{bar.innerHTML+="<i><b></b></i>"});const bs=[...bar.querySelectorAll("b")];
 let cur=-1,held=false,af=0,tk=0;
 const cl=x=>Math.max(0,Math.min(1,x)),ea=x=>x*x*(3-2*x);
 function pose(k,u,w){const s=sc[k],m=M[k%4],e=ea(u),c=s.firstChild;
-c.style.transform="translate3d("+(m[2]+(m[3]-m[2])*e)+"%,"+(-1+2*e)+"%,0) scale("+(m[0]+(m[1]-m[0])*e)+")";
+c.style.transform="translate3d("+(m[2]+(m[3]-m[2])*e)+"%,"+(-.4+.8*e)+"%,0) scale("+(m[0]+(m[1]-m[0])*e)+")";
 c.style.setProperty("--w",w+"%");c.querySelector(".ln").style.opacity=w>0&&w<100?.8:0}
 function upd(){tk=0;const h=fly.offsetHeight-innerHeight,p=cl(-fly.getBoundingClientRect().top/h),x=Math.min(N-.0001,p*N),i=Math.floor(x),t=x-i;
 sc.forEach((s,k)=>{let o=0;if(k<=i)o=k==i?1:0;if(k==i+1&&t>.88)o=(t-.88)/.12;s.style.opacity=o;s.style.zIndex=k;
