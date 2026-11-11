@@ -200,8 +200,8 @@ footer .wm{font:500 22px var(--disp);letter-spacing:.34em;color:var(--ink);text-
 <nav id="rail" aria-label="Rooms"></nav>
 
 <header id="hero"><div id="top"></div>
-<img class="hi on" id="h0" alt="Rear of 34690 Thornbrook Drive, listing photo" src="img/deck_before.jpg"><img class="hi" id="h1" alt="Rear of 34690 Thornbrook Drive, renovation concept" src="img/deck_after.jpg">
-<div class="tag" id="htag">Before</div>
+<img class="hi on" id="h0" alt="Front of 34690 Thornbrook Drive, renovation concept" src="img/x_front_after.jpg"><img class="hi" id="h1" alt="Rear of 34690 Thornbrook Drive, renovation concept" src="img/x_rear_wide_after.jpg">
+<div class="tag" id="htag" style="color:var(--brass2)">Concept render</div>
 <div class="wrap hc"><div class="eyebrow">A renovation proposal · Farmington Hills, Michigan</div>
 <h1 style="margin-top:44px">34690<br>Thornbrook<em>Original brick. Warm wood. A fresh start.</em></h1>
 <p class="sub">Keep the brick, the beams and the big windows. Open the kitchen, lay one continuous oak floor and finish the lower level.</p></div>
@@ -343,7 +343,7 @@ const ROOMS=[{"k": "deck", "t": "Rear exterior", "c": "Refresh the deck and rail
 const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),ea=x=>x*x*(3-2*x);
 /* nav + hero cross-fade */
 const nav=$("nav");function nv(){nav.classList.toggle("on",scrollY>40)}addEventListener("scroll",nv,{passive:true});nv();
-let hs=0;const h0=$("h0"),h1=$("h1"),ht=$("htag");setInterval(()=>{hs^=1;h0.classList.toggle("on",!hs);h1.classList.toggle("on",!!hs);ht.textContent=hs?"After · concept":"Before";ht.style.color=hs?"var(--brass2)":""},4800);
+const HL=["x_front_after","x_rear_wide_after","x_deck_main_after","x_side_after"],HT=["Front · concept","Rear · concept","Deck · concept","Side · concept"];let hs=0,hi=0;const h0=$("h0"),h1=$("h1"),ht=$("htag");HL.slice(2).forEach(k=>{const i=new Image();i.src="img/"+k+".jpg"});setInterval(()=>{hi=(hi+1)%HL.length;hs^=1;const nx=hs?h1:h0,pv=hs?h0:h1;nx.src="img/"+HL[hi]+".jpg";nx.classList.add("on");pv.classList.remove("on");ht.textContent=HT[hi]},5200);
 /* manifesto word reveal */
 const mp=$("mfp");const mw=[];(function wrap(n){[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(t=>{if(!t.trim()){f.appendChild(document.createTextNode(t));return}const s=document.createElement("span");s.className="w";s.textContent=t;mw.push(s);f.appendChild(s)});c.replaceWith(f)}else if(c.nodeType===1)wrap(c)})})(mp);
 function mf(){const r=mp.getBoundingClientRect(),p=cl((innerHeight*.9-r.top)/(innerHeight*.55+r.height*.5));const n=Math.floor(p*mw.length*1.15);mw.forEach((w,i)=>w.classList.toggle("on",i<n))}
